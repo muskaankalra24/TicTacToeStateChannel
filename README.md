@@ -2,7 +2,7 @@
 The task is to create a basic two player command line tic tac toe game
 backend in node js with ethereum based payment state channel
 
-##What are state channels?
+## What are state channels?
 
 It’s a scaling solution to create decentralized applications and smart contracts that can be used by millions of users in almost real-time. They work by initiating a channel between 2 or more users in which they exchange encrypted, signed messages with the information of the transaction they want to execute.
 
@@ -10,7 +10,7 @@ They are called “state” because each interaction has to have a state that ca
 
 State channels were created because ethereum applications quickly grew in popularity making the blockchain unusable since it was developed with a moderate use. They allow continuous transactions without paying for gas or waiting for miners to process the transactions.
 
-##What do we need to set up a state channel?
+## What do we need to set up a state channel?
 
 At least 2 users that will interact with each other. A channel needs to be opened between 2 or more users. Similar to a chat application.
 
