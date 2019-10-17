@@ -1,9 +1,29 @@
-# Tic-Tac-Chain
-Blockchain based tic tac toe (467H coursework)
+# Tic-Tac-Toe
+The task is to create a basic two player command line tic tac toe game
+backend in node js with ethereum based payment state channel
 
-## Overview
-	
-This is an implementation of the Tic-Tac-Toe game in Solidity, deployed on the Kovan Testnet, and interfaced with Javascript and EthJS using Metamask.
+##What are state channels?
+
+It’s a scaling solution to create decentralized applications and smart contracts that can be used by millions of users in almost real-time. They work by initiating a channel between 2 or more users in which they exchange encrypted, signed messages with the information of the transaction they want to execute.
+
+They are called “state” because each interaction has to have a state that can be updated. 
+
+State channels were created because ethereum applications quickly grew in popularity making the blockchain unusable since it was developed with a moderate use. They allow continuous transactions without paying for gas or waiting for miners to process the transactions.
+
+##What do we need to set up a state channel?
+
+At least 2 users that will interact with each other. A channel needs to be opened between 2 or more users. Similar to a chat application.
+
+A smart contract with the state channel logic that will open and close it.
+
+If the state channel will be used in a game, an escrow will be required for both users. That escrow in ether will be stored in the smart contract when opening the channel.
+
+ A javascript application that will generate the signed messages that will be exchanged off-chain between the users.
+
+ Metamask or a similar tool for signing messages. Signing messages don’t cost gas and they are executed instantly. It’s required from both users to sign the messages to guarantee that tehy are the ones generating such transaction.
+
+ Email or any external application to exchange those signed messages to make that application possible.
+
 
 ## Requirements
 
@@ -20,10 +40,7 @@ npm install web3 ethjs express
 ```
 Finally, to run the game you will need to create an ethereum account. For testing purposes I advise getting a Kovan testnet wallet and some Kovan ether to play around:
 
-* [Metamask](https://metamask.io/) follow the instructions to install and use Metamask in your web browser 
-* once installed the Kovan test network can be selected in the top left drop down menu in the addon
-* create as many account (wallet) as you want in the addon
-* obtain Kovan ether from [Gitter](https://gitter.im/kovan-testnet/faucet) by simply giving your wallet address in the chat (5 ETH every 12h per user)
+
 
 ## Usage
 
@@ -32,12 +49,8 @@ Once the setup complete, start the webserver:
 nodejs app.js
 ```
 
-To play using the interface, I recommend opening the page (localhost:8080) in two separate web browsers both with a different wallet on the Kovan Testnet already selected in Metamask before opening the pages (ie: if you log into metamask or change account once the page is loaded, the game won’t work).
 
-You can [watch how to play a game here](https://youtu.be/iAlfjQSaE6w)
 
-## Remarks
 
-* In order to deploy your own smart contract on the blockchain you will need to write and compile the associated Solidity code (or [another language](https://ethereum.stackexchange.com/questions/350/what-are-the-contract-languages/368#368) ). The details of the Solidity language can be found [here](http://solidity.readthedocs.io/en/v0.4.21/). Online editors and compilers are very useful, see [here](https://remix.ethereum.org/).
-* For this project the Solidity source code is available in TicTacToe.sol
-* Future improvements include adding a prize pool for the players, and also using this pool for the gas for each turn in order to avoid asking for the user approval through Metamask at each turn
+
+

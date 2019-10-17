@@ -4,7 +4,7 @@ contract TicTacToe {
     address player1;
     address player2;
     uint turn;
-    uint winnerWinnerChickenDinner;
+    uint winnerWinner;
     uint[] board = new uint[](9);
     //top left corner is 1, then left to right, up to down
     
@@ -16,7 +16,7 @@ contract TicTacToe {
     }
     
     function kill() public { 
-        if (msg.sender == player1 && winnerWinnerChickenDinner>0) {
+        if (msg.sender == player1 && winnerWinner>0) {
             selfdestruct(player1); 
         }
     }
@@ -56,8 +56,8 @@ contract TicTacToe {
     function winner() public view returns (uint) {
 
         //getter for the winner attribute
-        if (winnerWinnerChickenDinner>0) {
-            return winnerWinnerChickenDinner;
+        if (winnerWinner>0) {
+            return winnerWinner;
         } else {
             return 0;
         }    
@@ -68,7 +68,7 @@ contract TicTacToe {
         //function to assess whether a required move is valid or not
         //used both as an external callable function and internally to validate moves
         //before writing them to the board
-        return !(winnerWinnerChickenDinner>0 || a<0 || a>8 || board[a]>0) &&
+        return !(winnerWinner>0 || a<0 || a>8 || board[a]>0) &&
                 ((msg.sender == player1 && turn==1) || (msg.sender == player2 && turn==2));
     }
 
@@ -82,7 +82,7 @@ contract TicTacToe {
             } else { 
                 turn = 1;
             }
-            winnerWinnerChickenDinner = checkWin();
+            winnerWinner = checkWin();
         } else {
             revert();
         }
